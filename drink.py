@@ -7,22 +7,14 @@ as published by Sam Hocevar. See the COPYING file for more details.
 """
 
 import os
-import sqlite3 as db
+import drinkDB
+from views import DrinkView
 from flask import Flask, request, session, g
 
 # create application
 app = Flask(__name__)
+app.config.from_object(__name__)
 
-@app.route("/")
-def hello():
-    return "sup"
-
-if __name__ == "__main__":
-    app.debug=True
-    app.run(host='10.10.56.190')
-
-
-"""
 # load up a config
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'drink.db'),
@@ -31,4 +23,11 @@ app.config.update(dict(
     USERNAME='admin',
     PASSWORD='admin'
     ))
-app.config.from_envvar('DRINK_SETTINGS', silent=True)"""
+app.config.from_envvar('DRINK_SETTINGS', silent=True)
+
+app.add_url_rule('/', view_func = DrinkView.as_view('drink_view'))
+
+if __name__ == "__main__":
+    app.run(host='10.10.56.190')
+
+
