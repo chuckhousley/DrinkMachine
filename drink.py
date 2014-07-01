@@ -25,7 +25,7 @@ app.config.update(dict(
     ))
 app.config.from_envvar('DRINK_SETTINGS', silent=True)
 
-app.add_url_rule('/', view_func = DrinkView.as_view('drink_view'))
+app.add_url_rule('/', view_func=DrinkView.as_view('drink_view'))
 
 if __name__ == "__main__":
     app.run(host='10.10.56.190')

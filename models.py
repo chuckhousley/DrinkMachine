@@ -4,6 +4,7 @@ _conn = db.connect('drink.db', check_same_thread=False)
 _conn.row_factory = db.Row
 _cursor = _conn.cursor()
 
+
 class DrinkModel:
     def __init__(self):
         pass
