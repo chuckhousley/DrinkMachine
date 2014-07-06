@@ -12,4 +12,5 @@ from the very top:
 * pip install Flask
 * pip install uwsgi
 * pip install Flask-Restless
+* pip install Flask-SQLAlchemy
 

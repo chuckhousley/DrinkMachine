@@ -8,7 +8,7 @@ as published by Sam Hocevar. See the COPYING file for more details.
 
 import os
 from flask import Flask, request, session, g, render_template
-from flask.ext.restless import APIManager
+from drinkDB import init_db
 from flask.ext.sqlalchemy import SQLAlchemy
 
 # create application
@@ -16,17 +16,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///drink.db'
 db = SQLAlchemy(app)
 
-
-class Drink(db.Model):
-    id = db.Column(db.INTEGER, primary_key=True)
-    name = db.Column(db.TEXT)
-    num = db.Column(db.INTEGER)
-
-db.create_all()
-
-api_manager = APIManager(app, flask_sqlalchemy_db=db)
-api_manager.create_api(Drink, methods=['GET', 'POST', 'DELETE', 'PUT'])
-
+init_db(app, db)
 
 @app.route('/')
 def hello():

@@ -9,8 +9,10 @@
 {% block content %}
 <p>content</p>
 <div ng-app="DrinkApp">
-    <div ng-view>
+    <div ng-controller="test">
         reserved for app
+        <p>The ID is {{ "fart" }}</p>
+        <p>The drink is {{ "poop" }}</p>
     </div>
 </div>
 {% endblock content %}
