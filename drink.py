@@ -18,6 +18,12 @@ db = SQLAlchemy(app)
 
 init_db(app, db)
 
+
+@app.route('/_get_drinks')
+def get_drinks():
+    pass
+
+
 @app.route('/')
 def hello():
     return render_template('main.html')
