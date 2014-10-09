@@ -8,13 +8,4 @@
 
 {% block content %}
 <p>content</p>
-<div ng-app="DrinkApp">
-    <div ng-controller="DrinkController as drink">
-        <div ng-repeat="d in drinks">
-            <p>The ID is [[ d.id ]]</p>
-            <p>The drink is [[ d.name ]]</p>
-            <button>button</button>
-        </div>
-    </div>
-</div>
 {% endblock content %}
