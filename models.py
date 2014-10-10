@@ -1,16 +1,14 @@
-import sqlite3 as db
+from drinkDB import db
 
-_conn = db.connect('drink.db', check_same_thread=False)
-_conn.row_factory = db.Row
-_cursor = _conn.cursor()
+class Drink(db.Model):
+    id = db.Column(db.INTEGER, primary_key=True)
+    name = db.Column(db.TEXT)
+    num = db.Column(db.INTEGER)
 
+    def __init__(self, name):
+        self.name = name
+        self.num = 0
 
-class DrinkModel:
-    def __init__(self):
-        pass
-
-    @classmethod
-    def add_drink(cls, name):
-        _cursor.execute('INSERT INTO drink(text) VALUES(?)', (name, ))
-        _conn.commit()
+    def __repr__(self):
+        return self.name
 

@@ -8,15 +8,15 @@ as published by Sam Hocevar. See the COPYING file for more details.
 
 import os
 from flask import Flask, request, session, g, render_template
-from drinkDB import init_db
-from flask.ext.sqlalchemy import SQLAlchemy
+
+import drinkDB
+import views
+
 
 # create application
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///drink.db'
-db = SQLAlchemy(app)
-
-init_db(app, db)
+drinkDB.init_db(app)
 
 
 @app.route('/_get_drinks')
@@ -26,8 +26,7 @@ def get_drinks():
 
 @app.route('/')
 def hello():
-    drinks = []
-    return render_template('main.html', drinks=drinks)
+    views.DrinkView.get()
 
 
 if __name__ == "__main__":
