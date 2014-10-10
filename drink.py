@@ -7,22 +7,10 @@ as published by Sam Hocevar. See the COPYING file for more details.
 """
 
 import os
-from flask import Flask, request, session, g, render_template
 
-import drinkDB
-import views
-
-
-# create application
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///drink.db'
-drinkDB.init_db(app)
-
-
-@app.route('/_get_drinks')
-def get_drinks():
-    pass
-
+import controller.drinkDB
+import view.views
+drinkDB.init_db()
 
 @app.route('/')
 def hello():
