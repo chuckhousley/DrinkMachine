@@ -26,7 +26,8 @@ def get_drinks():
 
 @app.route('/')
 def hello():
-    return render_template('main.html')
+    drinks = []
+    return render_template('main.html', drinks=drinks)
 
 
 if __name__ == "__main__":
