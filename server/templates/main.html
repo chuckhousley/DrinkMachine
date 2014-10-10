@@ -1,0 +1,18 @@
+<!doctype html>
+{% extends "layout.html" %}
+
+{% block header %}
+<h2>Testing</h2>
+<script src="/static/drink.js"></script>
+{% endblock header %}
+
+{% block content %}
+<p>content</p>
+<ul class="drinks">
+    {% for drink in drinks %}
+    <li><h2>{{ drink.name }}</h2>{{ drink.num }}</li>
+    {% else %}
+    <li><h2> No drinks today, boss </li></h2>
+    {% endfor %}
+</ul>
+{% endblock content %}

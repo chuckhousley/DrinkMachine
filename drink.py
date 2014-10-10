@@ -7,7 +7,8 @@ as published by Sam Hocevar. See the COPYING file for more details.
 """
 
 import os
-
+print '--------'
+print __name__
 import controller.drinkDB
 import view.views
 drinkDB.init_db()
