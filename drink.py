@@ -7,16 +7,7 @@ as published by Sam Hocevar. See the COPYING file for more details.
 """
 
 import os
-print '--------'
-print __name__
-import controller.drinkDB
-import view.views
-drinkDB.init_db()
-
-@app.route('/')
-def hello():
-    views.DrinkView.get()
-
+from server import app
 
 if __name__ == "__main__":
     app.run(debug=True)  # host='10.10.56.190')

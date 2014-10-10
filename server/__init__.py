@@ -4,4 +4,4 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///drink.db'
 app.debug = True
-from controllers import *
+from controller import *

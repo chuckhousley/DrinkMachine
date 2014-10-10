@@ -1,4 +1,4 @@
-import controller.drinkDB
+import server.controller.drinkDB
 
 class Drink(drinkDB.db.Model):
     id = drinkDB.db.Column(db.INTEGER, primary_key=True)
