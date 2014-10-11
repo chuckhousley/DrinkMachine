@@ -1,11 +1,20 @@
-from flask import request, jsonify, render_template
-from models import Drink
-import flask.views
+from flask.views import MethodView
 import json
+from server import app
+from server.model.models import Drink
 
+@app.route('/')
+def display_start():
+    drinks = Drink.query.all()
+    return render_template('main.html', drinks=drinks)
 
-class DrinkView(flask.views.MethodView):
+class DrinkView(MethodView):
     def get(self):
-        drinks = Drink.query.all()
-        return render_template('main.html', drinks=drinks)
+        drinks = None
+
+    def put(self):
+        pass
+
+
+app.add_url_rule('/', view_func=DrinkView.as_view('display_front'))
 

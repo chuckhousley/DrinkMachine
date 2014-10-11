@@ -1,9 +1,9 @@
-import server.controller.drinkDB
+from server import db
 
-class Drink(drinkDB.db.Model):
-    id = drinkDB.db.Column(db.INTEGER, primary_key=True)
-    name = drinkDB.db.Column(db.TEXT)
-    num = drinkDB.db.Column(db.INTEGER)
+class Drink(db.Model):
+    id = db.Column(db.INTEGER, primary_key=True)
+    name = db.Column(db.TEXT)
+    num = db.Column(db.INTEGER)
 
     def __init__(self, name):
         self.name = name

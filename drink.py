@@ -8,6 +8,8 @@ as published by Sam Hocevar. See the COPYING file for more details.
 
 import os
 from server import app
+import server.model
+
 
 if __name__ == "__main__":
     app.run(debug=True)  # host='10.10.56.190')
