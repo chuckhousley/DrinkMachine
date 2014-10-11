@@ -7,7 +7,7 @@ from flask.ext.restless import APIManager
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///drink.db'
 db = SQLAlchemy(app)
-# api_manager = APIManager(app, flask_sqlalchemy_db=db)
-# api_manager.create_api(model.models.Drink, methods=['GET'])
 import server.model.models as model
 
+api_manager = APIManager(app, flask_sqlalchemy_db=db)
+api_manager.create_api(model.Drink, methods=['GET'])
