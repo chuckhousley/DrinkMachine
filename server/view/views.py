@@ -1,3 +1,4 @@
+from flask import render_template
 from flask.views import MethodView
 import json
 from server import app

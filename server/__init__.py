@@ -11,4 +11,3 @@ db = SQLAlchemy(app)
 # api_manager.create_api(model.models.Drink, methods=['GET'])
 import server.model.models as model
 
-
