@@ -1,18 +1,18 @@
 from server import db
 
-instructions = db.Table('instructions',
+instructions = db.Table('Instructions',
 	db.Column('drink_id', db.INTEGER, db.ForeignKey('drink.id')),
 	db.Column('bottle_id', db.INTEGER, db.ForeignKey('bottle.id')),
-	db.Column('amount', db.INTEGER)
+	db.Column('amount', db.INTEGER, nullable=False)
 )
 
 class Drink(db.Model):
     id = db.Column(db.INTEGER, primary_key=True)
     name = db.Column(db.TEXT)
     num = db.Column(db.INTEGER)
-	inst = db.relationship('Instructions', secondary=instructions,
-		backref=db.backref('drink
+    inst = db.relationship('Bottle', secondary=instructions)
 
+    
     def __init__(self, name):
         self.name = name
         self.num = 0
@@ -35,4 +35,7 @@ class Bottle(db.Model):
 		return self
 		
 		
-	
+class Machine(db.Model):
+    id = db.Column(db.INTEGER, primary_key=True)
+    bottle = db.Column(db.INTEGER, db.ForeignKey('bottle.id'), unique=True)
+    
