@@ -1,17 +1,16 @@
 from server import db
 
 class Instructions(db.Model):
-    id = db.Column(db.INTEGER, primary_key=True)
+    id = db.Column(db.INTEGER, primary_key=True, autoincrement=True)
     drink_id = db.Column(db.INTEGER, db.ForeignKey('drink.id'), nullable=False)
     bottle_id = db.Column(db.INTEGER, db.ForeignKey('bottle.id'), nullable=False)
     amount = db.Column(db.INTEGER, nullable=False)
 
 
 class Drink(db.Model):
-    id = db.Column(db.INTEGER, primary_key=True)
-    name = db.Column(db.TEXT)
+    id = db.Column(db.INTEGER, primary_key=True, autoincrement=True)
+    name = db.Column(db.TEXT, unique=True)
     num = db.Column(db.INTEGER)
-    inst = db.relationship('Bottle', secondary=instructions)
 
     
     def __init__(self, name):
@@ -23,12 +22,12 @@ class Drink(db.Model):
 
 
 class Bottle(db.Model):
-    id = db.Column(db.INTEGER, primary_key=True)
-    name = db.Column(db.TEXT)
-    amount = db.Column(db.INTEGER)
+    id = db.Column(db.INTEGER, primary_key=True, autoincrement=True)
+    name = db.Column(db.TEXT, unique=True)
+    amount = db.Column(db.INTEGER, nullable=False)
     
     
-    def __init__(self, amount):
+    def __init__(self, name, amount):
         self.name = name
         self.amount = amount
         
@@ -39,4 +38,11 @@ class Bottle(db.Model):
 class Machine(db.Model):
     id = db.Column(db.INTEGER, primary_key=True)
     bottle = db.Column(db.INTEGER, db.ForeignKey('bottle.id'), unique=True)
+    
+    def __init__(self, pos, bottle):
+        self.id = pos
+        self.bottle = bottle
+    
+    
+
     

@@ -8,11 +8,33 @@
 
 {% block content %}
 <p>content</p>
+<form action="{{ url_for('add_drink') }}" method="post">
+    <dl>
+        <dt>Drink
+        <dd><input type="text" size="30" name="drink_name">
+        <dd><input type="submit" value="Add">
+</form>
+<form action="{{ url_for('add_bottle') }}" method="post">
+    <dl>
+        <dt>Bottle
+        <dd><input type="text" size="30" name="bottle">
+        <dt>Amount
+        <dd><input type="text" size="4" name="amount">
+        <dd><input type="submit" value="Add">
+</form>
 <ul class="drinks">
     {% for drink in drinks %}
     <li><h2>{{ drink.name }}</h2>{{ drink.num }}</li>
     {% else %}
-    <li><h2> No drinks today, boss </li></h2>
+    <li><h2>No drinks today, boss</li></h2>
+    {% endfor %}
+</ul>
+
+<ul class="bottles">
+    {% for bottle in bottles %}
+    <li><h2>{{ bottle.name }}</h2>{{ bottle.amount }}</li>
+    {% else %}
+    <li><h2>No bottles</li></h2>
     {% endfor %}
 </ul>
 {% endblock content %}
